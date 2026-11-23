@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Arsip Barang{% endblock %}
+{% block content %}
+<div class="page-heading"><div><h1>Arsip Barang</h1><p>Riwayat transaksi barang yang diarsipkan tetap tersimpan.</p></div></div>
+<section class="panel"><div class="table-wrap"><table><thead><tr><th>Kode</th><th>Nama</th><th>Stok terakhir</th><th>Aksi</th></tr></thead><tbody>
+{% for b in barang %}<tr><td>{{ b.kode_barang }}</td><td>{{ b.nama_barang }}</td><td>{{ b.stok }}</td><td><form method="post" action="{{ url_for('pulihkan_barang', kode=b.kode_barang) }}"><button class="btn small primary">Pulihkan</button></form></td></tr>
+{% else %}<tr><td colspan="4" class="empty">Arsip masih kosong.</td></tr>{% endfor %}
+</tbody></table></div></section>
+{% endblock %}
